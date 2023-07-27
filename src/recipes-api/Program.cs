@@ -1,6 +1,8 @@
 using recipes_api.Models;
 using recipes_api.Services;
 
+
+// começando o projeto! #vqv 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSingleton<IRecipeService, RecipeService>();
@@ -20,8 +22,8 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+  app.UseSwagger();
+  app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
