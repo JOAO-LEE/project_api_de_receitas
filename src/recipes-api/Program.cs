@@ -1,8 +1,6 @@
 using recipes_api.Models;
 using recipes_api.Services;
 
-
-// começando o projeto! #vqv 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSingleton<IRecipeService, RecipeService>();
