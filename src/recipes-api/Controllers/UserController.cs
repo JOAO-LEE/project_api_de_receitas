@@ -47,12 +47,25 @@ public class UserController : ControllerBase
   public IActionResult Update(string email, [FromBody] User user)
   {
     throw new NotImplementedException();
+
+    // bool doesUserExist = _service.UserExists(email);
+    // if (!doesUserExist)
+    // {
+    //   return NotFound();
+    // }
+    // _service.UpdateUser();
   }
 
   // 9 - Sua aplicação deve ter o endpoint DEL /user
   [HttpDelete("{email}")]
   public IActionResult Delete(string email)
   {
-    throw new NotImplementedException();
+    bool doesUserExist = _service.UserExists(email);
+    if (!doesUserExist)
+    {
+      return NotFound();
+    }
+    _service.DeleteUser(email);
+    return NoContent();
   }
 }
