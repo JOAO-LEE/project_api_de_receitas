@@ -32,14 +32,14 @@ public class UserController : ControllerBase
 
     User searchedUser = _service.GetUser(email);
     return Ok(searchedUser);
-
   }
 
   // 7 - Sua aplicação deve ter o endpoint POST /user
   [HttpPost]
   public IActionResult Create([FromBody] User user)
   {
-    throw new NotImplementedException();
+    _service.AddUser(user);
+    return StatusCode(201, user);
   }
 
   // "8 - Sua aplicação deve ter o endpoint PUT /user
