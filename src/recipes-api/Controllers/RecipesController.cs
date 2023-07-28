@@ -55,7 +55,7 @@ public class RecipesController : ControllerBase
   [HttpPut("{name}")]
   public IActionResult Update(string name, [FromBody] Recipe recipe)
   {
-    bool doesRecipeExist = _service.RecipeExists(name);
+    bool doesRecipeExist = _service.RecipeExists(recipe.Name);
 
     if (!doesRecipeExist)
     {
