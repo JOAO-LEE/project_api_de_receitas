@@ -34,6 +34,11 @@ public class RecipesController : ControllerBase
   [HttpGet("{name}", Name = "GetRecipe")]
   public IActionResult Get(string name)
   {
+    bool doesRecipeExist = _service.RecipeExists(name);
+    if (!doesRecipeExist)
+    {
+      return NotFound();
+    }
     var recipeByName = _service.GetRecipe(name);
     return Ok(recipeByName);
   }
@@ -51,13 +56,13 @@ public class RecipesController : ControllerBase
   public IActionResult Update(string name, [FromBody] Recipe recipe)
   {
     bool doesRecipeExist = _service.RecipeExists(name);
-    if (!doesRecipeExist)
-    {
-      return BadRequest();
-    }
 
-    _service.UpdateRecipe(recipe);
-    return NoContent();
+    if (doesRecipeExist)
+    {
+      _service.UpdateRecipe(recipe);
+      return NoContent();
+    }
+    return BadRequest();
   }
 
   // 5 - Sua aplicação deve ter o endpoint DEL /recipe
