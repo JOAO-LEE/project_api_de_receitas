@@ -53,7 +53,7 @@ public class RecipesController : ControllerBase
 
   // 4 - Sua aplicação deve ter o endpoint PUT /recipe
   [HttpPut("{name}")]
-  public IActionResult Update(string name, [FromBody] Recipe recipe)
+  public IActionResult Update([FromBody] Recipe recipe)
   {
     bool doesRecipeExist = _service.RecipeExists(recipe.Name);
 
